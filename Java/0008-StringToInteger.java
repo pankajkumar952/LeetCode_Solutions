@@ -3,7 +3,6 @@ class Solution {
         int i = 0;
         int n = s.length();
 
-        // 1. Skip leading spaces
         while (i < n && s.charAt(i) == ' ') {
             i++;
         }
