@@ -11,7 +11,6 @@ class Solution {
             int area = width * h;
             maxWater = Math.max(maxWater, area);
 
-            // Move the shorter line
             if (height[left] < height[right]) {
                 left++;
             } else {
