@@ -14,7 +14,7 @@ class Solution {
 
         int currentRow = 0;
         boolean goingDown = true;
-
+        
         for (char ch : s.toCharArray()) {
             rows[currentRow].append(ch);
 
