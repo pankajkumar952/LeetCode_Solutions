@@ -6,10 +6,8 @@ class Solution {
 
         boolean[][] dp = new boolean[m + 1][n + 1];
 
-        // Empty string matches empty pattern.
         dp[0][0] = true;
 
-        // Empty string can match patterns like a*, a*b*, a*b*c*, ...
         for (int j = 2; j <= n; j++) {
             if (p.charAt(j - 1) == '*') {
                 dp[0][j] = dp[0][j - 2];
