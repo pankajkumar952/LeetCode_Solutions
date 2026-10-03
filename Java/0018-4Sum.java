@@ -12,7 +12,6 @@ class Solution {
 
         for (int i = 0; i < n - 3; i++) {
 
-            // Skip duplicate first number
             if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
