@@ -8,7 +8,6 @@ class Solution {
             return null;
         }
 
-        // Min Heap: smallest node comes first
         PriorityQueue<ListNode> pq = new PriorityQueue<>(
             (a, b) -> Integer.compare(a.val, b.val)
         );
