@@ -18,12 +18,11 @@ class Solution {
                 maxOpen++;  // '*' acts as '('
             }
 
-            // Too many closing brackets
+            
             if (maxOpen < 0) {
                 return false;
             }
 
-            // Minimum cannot be negative
             minOpen = Math.max(minOpen, 0);
         }
 
