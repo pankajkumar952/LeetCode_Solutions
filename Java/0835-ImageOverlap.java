@@ -3,7 +3,6 @@ class Solution {
         int n = img1.length;
         int maxOverlap = 0;
 
-        // dr = row translation, dc = column translation
         for (int dr = -(n - 1); dr <= n - 1; dr++) {
             for (int dc = -(n - 1); dc <= n - 1; dc++) {
 
