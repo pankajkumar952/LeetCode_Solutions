@@ -2,7 +2,6 @@ class Solution {
 
     public ListNode reverseKGroup(ListNode head, int k) {
 
-        // Dummy node makes handling the first group easier
         ListNode dummy = new ListNode(0);
         dummy.next = head;
 
