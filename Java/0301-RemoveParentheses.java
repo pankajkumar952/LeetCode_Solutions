@@ -3,16 +3,20 @@ import java.util.*;
 class Solution {
 
     public List<String> removeInvalidParentheses(String s) {
+
         List<String> ans = new ArrayList<>();
 
-        // Find the minimum number of '(' and ')' to remove
+        // Find minimum number of removals
         int leftRemove = 0;
         int rightRemove = 0;
 
         for (char c : s.toCharArray()) {
+
             if (c == '(') {
                 leftRemove++;
+
             } else if (c == ')') {
+
                 if (leftRemove > 0) {
                     leftRemove--;
                 } else {
@@ -21,7 +25,12 @@ class Solution {
             }
         }
 
-        dfs(s, 0, leftRemove, rightRemove, 0, new StringBuilder(), ans);
+        Set<String> set = new HashSet<>();
+
+        dfs(s, 0, leftRemove, rightRemove,
+            0, new StringBuilder(), set);
+
+        ans.addAll(set);
 
         return ans;
     }
@@ -32,49 +41,52 @@ class Solution {
                      int rightRemove,
                      int balance,
                      StringBuilder path,
-                     List<String> ans) {
+                     Set<String> set) {
 
-        // Invalid balance: more ')' than '('
+        // More ')' than '('
         if (balance < 0) {
             return;
         }
 
-        // Not enough characters left to remove
+        // Not enough characters remaining to remove
         if (s.length() - index < leftRemove + rightRemove) {
             return;
         }
 
+        // End of string
         if (index == s.length()) {
+
             if (leftRemove == 0 &&
                 rightRemove == 0 &&
                 balance == 0) {
 
-                ans.add(path.toString());
+                set.add(path.toString());
             }
+
             return;
         }
 
         char c = s.charAt(index);
 
-        // Case 1: Current character is '('
+        // --------------------------------
+        // CASE 1: '('
+        // --------------------------------
         if (c == '(') {
 
-            // Option A: Remove it
+            // Remove '('
             if (leftRemove > 0) {
-                // Avoid duplicate removals
-                if (index == 0 || s.charAt(index - 1) != '(') {
-                    dfs(s,
-                        index + 1,
-                        leftRemove - 1,
-                        rightRemove,
-                        balance,
-                        path,
-                        ans);
-                }
+
+                dfs(s,
+                    index + 1,
+                    leftRemove - 1,
+                    rightRemove,
+                    balance,
+                    path,
+                    set);
             }
 
-            // Option B: Keep it
-            path.append(c);
+            // Keep '('
+            path.append('(');
 
             dfs(s,
                 index + 1,
@@ -82,32 +94,32 @@ class Solution {
                 rightRemove,
                 balance + 1,
                 path,
-                ans);
+                set);
 
             path.deleteCharAt(path.length() - 1);
-
         }
 
-        // Case 2: Current character is ')'
+        // --------------------------------
+        // CASE 2: ')'
+        // --------------------------------
         else if (c == ')') {
 
-            // Option A: Remove it
+            // Remove ')'
             if (rightRemove > 0) {
-                // Avoid duplicate removals
-                if (index == 0 || s.charAt(index - 1) != ')') {
-                    dfs(s,
-                        index + 1,
-                        leftRemove,
-                        rightRemove - 1,
-                        balance,
-                        path,
-                        ans);
-                }
+
+                dfs(s,
+                    index + 1,
+                    leftRemove,
+                    rightRemove - 1,
+                    balance,
+                    path,
+                    set);
             }
 
-            // Option B: Keep it
+            // Keep ')' only if matching '(' exists
             if (balance > 0) {
-                path.append(c);
+
+                path.append(')');
 
                 dfs(s,
                     index + 1,
@@ -115,15 +127,17 @@ class Solution {
                     rightRemove,
                     balance - 1,
                     path,
-                    ans);
+                    set);
 
                 path.deleteCharAt(path.length() - 1);
             }
-
         }
 
-        // Case 3: Letter
+        // --------------------------------
+        // CASE 3: Letter
+        // --------------------------------
         else {
+
             path.append(c);
 
             dfs(s,
@@ -132,7 +146,7 @@ class Solution {
                 rightRemove,
                 balance,
                 path,
-                ans);
+                set);
 
             path.deleteCharAt(path.length() - 1);
         }
