@@ -22,9 +22,6 @@ class Solution {
         while (i < n && Character.isDigit(s.charAt(i))) {
             int digit = s.charAt(i) - '0';
 
-            // Check overflow before:
-            // result = result * 10 + digit
-
             if (result > Integer.MAX_VALUE / 10 ||
                 (result == Integer.MAX_VALUE / 10 && digit > 7)) {
                 return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
