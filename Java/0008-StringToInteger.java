@@ -7,7 +7,7 @@ class Solution {
             i++;
         }
 
-        // 2. Determine sign
+ 
         int sign = 1;
 
         if (i < n && s.charAt(i) == '-') {
