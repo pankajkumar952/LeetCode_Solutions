@@ -98,11 +98,7 @@ class Solution {
         return result;
     }
 
-    /*
-     * Choose the state with:
-     * 1. Larger score
-     * 2. If equal score, lexicographically smaller indices
-     */
+
     private State better(State a, State b) {
 
         if (a.score != b.score) {
@@ -126,9 +122,6 @@ class Solution {
                 return a[i] < b[i];
             }
         }
-
-        // If one is a prefix of the other,
-        // the shorter one is lexicographically smaller.
         return a.length < b.length;
     }
 
