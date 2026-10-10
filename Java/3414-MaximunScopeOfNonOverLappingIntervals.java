@@ -15,7 +15,6 @@ class Solution {
     public int[] maximumWeight(List<List<Integer>> intervals) {
         int n = intervals.size();
 
-        // [left, right, weight, originalIndex]
         int[][] a = new int[n][4];
 
         for (int i = 0; i < n; i++) {
@@ -25,7 +24,6 @@ class Solution {
             a[i][3] = i;
         }
 
-        // Sort by starting position.
         Arrays.sort(a, (x, y) -> {
             if (x[0] != y[0]) {
                 return Integer.compare(x[0], y[0]);
@@ -33,14 +31,12 @@ class Solution {
             return Integer.compare(x[1], y[1]);
         });
 
-        // All starting positions.
         int[] starts = new int[n];
 
         for (int i = 0; i < n; i++) {
             starts[i] = a[i][0];
         }
 
-        // next[i] = first interval whose left > a[i].right
         int[] next = new int[n];
 
         for (int i = 0; i < n; i++) {
@@ -59,7 +55,6 @@ class Solution {
             dp[i][0] = new State(0, new int[0]);
         }
 
-        // No intervals remaining.
         for (int k = 1; k <= 4; k++) {
             dp[n][k] = new State(0, new int[0]);
         }
