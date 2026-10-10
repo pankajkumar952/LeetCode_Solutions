@@ -17,7 +17,6 @@ class Solution {
             i++;
         }
 
-        // 3. Convert digits
         int result = 0;
 
         while (i < n && Character.isDigit(s.charAt(i))) {
