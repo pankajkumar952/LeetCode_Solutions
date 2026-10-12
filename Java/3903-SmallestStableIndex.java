@@ -11,7 +11,6 @@ class Solution {
         }
  
         int mx = 0;
-        // Find first index with score <= k
         for (int i = 0; i < n; i++) {
             mx = Math.max(mx, nums[i]);
             int score = mx - suffix[i];
