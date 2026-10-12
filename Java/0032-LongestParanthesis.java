@@ -5,7 +5,6 @@ class Solution {
 
         Stack<Integer> stack = new Stack<>();
 
-        // Base index before the start of a valid substring
         stack.push(-1);
 
         int maxLength = 0;
