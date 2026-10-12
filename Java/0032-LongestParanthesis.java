@@ -23,13 +23,10 @@ class Solution {
 
                 if (stack.isEmpty()) {
 
-                    // Current ')' cannot be matched
-                    // Make this the new base
                     stack.push(i);
 
                 } else {
 
-                    // Valid substring length
                     int length = i - stack.peek();
 
                     maxLength = Math.max(maxLength, length);
