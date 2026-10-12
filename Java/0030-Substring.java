@@ -17,7 +17,7 @@ class Solution {
             return ans;
         }
 
-        // Frequency of words that we actually need
+
         Map<String, Integer> target = new HashMap<>();
 
         for (String word : words) {
