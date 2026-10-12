@@ -4,7 +4,6 @@ class Solution {
         final long MOD = 1_000_000_007L;
         int[] bits = new int[32];
 
-        // Count the set bits at each position
         for (int num : nums) {
             for (int b = 0; b < 32; b++) {
                 if ((num & (1 << b)) != 0) {
@@ -15,7 +14,6 @@ class Solution {
 
         long ans = 0;
 
-        // Construct k maximum numbers greedily
         for (int i = 0; i < k; i++) {
             long x = 0;
 
