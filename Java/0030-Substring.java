@@ -24,7 +24,6 @@ class Solution {
             target.put(word, target.getOrDefault(word, 0) + 1);
         }
 
-        // We need to check wordLen different starting offsets
         for (int offset = 0; offset < wordLen; offset++) {
 
             int left = offset;
