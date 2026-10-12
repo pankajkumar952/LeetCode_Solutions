@@ -13,12 +13,12 @@ class Solution {
 
             if (s.charAt(i) == '(') {
 
-                // Store index of '('
+            
                 stack.push(i);
 
             } else {
 
-                // Remove matching '('
+        
                 stack.pop();
 
                 if (stack.isEmpty()) {
