@@ -1,4 +1,3 @@
-
 class Solution {
     public String multiply(String num1, String num2) {
         if (num1.equals("0") || num2.equals("0")) {
