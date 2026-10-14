@@ -21,13 +21,11 @@ class Solution {
                 match++;
                 i = match;
             }
-            // No match is possible
+            
             else {
                 return false;
             }
         }
-
-        // Skip any remaining '*' characters
         while (j < p.length() && p.charAt(j) == '*') {
             j++;
         }
