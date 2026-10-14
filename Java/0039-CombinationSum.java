@@ -17,7 +17,6 @@ class Solution {
                             List<Integer> current,
                             List<List<Integer>> ans) {
 
-        // Target reached
         if (target == 0) {
             ans.add(new ArrayList<>(current));
             return;
