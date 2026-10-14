@@ -15,7 +15,7 @@ class Solution {
                 match = i;
                 j++;
             }
-            // If a previous '*' exists, let it match one more character
+            
             else if (star != -1) {
                 j = star + 1;
                 match++;
