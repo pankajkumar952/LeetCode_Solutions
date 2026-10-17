@@ -4,7 +4,6 @@ class Solution {
         int n = nums.length;
         int[][] arr = new int[n][2];
 
-        // Store number and its digit sum
         for (int i = 0; i < n; i++) {
             arr[i][0] = nums[i];
             arr[i][1] = digitSum(nums[i]);
