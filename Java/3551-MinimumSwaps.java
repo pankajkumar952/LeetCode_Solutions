@@ -16,7 +16,6 @@ class Solution {
             return a[0] - b[0];
         });
 
-        // Map each number to its sorted position
         Map<Integer, Integer> indexMap = new HashMap<>();
         for (int i = 0; i < n; i++) {
             indexMap.put(arr[i][0], i);
