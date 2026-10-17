@@ -21,7 +21,6 @@ class Solution {
             indexMap.put(arr[i][0], i);
         }
 
-        // Count minimum swaps using cycle detection
         boolean[] visited = new boolean[n];
         int swaps = 0;
 
