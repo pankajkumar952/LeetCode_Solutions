@@ -9,7 +9,6 @@ class Solution {
             arr[i][1] = digitSum(nums[i]);
         }
 
-        // Sort by digit sum, then by number
         Arrays.sort(arr, (a, b) -> {
             if (a[1] != b[1]) {
                 return a[1] - b[1];
