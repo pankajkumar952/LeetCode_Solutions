@@ -10,7 +10,6 @@ class Solution {
     private void backtrack(int[] nums, List<Integer> current,
                            List<List<Integer>> result) {
 
-        // Base case: permutation is complete
         if (current.size() == nums.length) {
             result.add(new ArrayList<>(current));
             return;
