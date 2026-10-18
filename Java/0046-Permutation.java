@@ -21,7 +21,7 @@ class Solution {
 
             current.add(num);             
             backtrack(nums, current, result); // Explore
-            current.remove(current.size() - 1); // Backtrack
+            current.remove(current.size() - 1); 
         }
     }
 }
