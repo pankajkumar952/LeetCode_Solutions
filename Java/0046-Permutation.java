@@ -20,7 +20,7 @@ class Solution {
                 continue;
             }
 
-            current.add(num);             // Choose
+            current.add(num);             
             backtrack(nums, current, result); // Explore
             current.remove(current.size() - 1); // Backtrack
         }
