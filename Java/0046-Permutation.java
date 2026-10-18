@@ -6,7 +6,6 @@ class Solution {
         backtrack(nums, new ArrayList<>(), result);
         return result;
     }
-
     private void backtrack(int[] nums, List<Integer> current,
                            List<List<Integer>> result) {
 
