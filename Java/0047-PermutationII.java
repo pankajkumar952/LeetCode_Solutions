@@ -1,6 +1,4 @@
-
 import java.util.*;
-
 class Solution {
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
