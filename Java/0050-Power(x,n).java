@@ -10,7 +10,7 @@ class Solution {
 
         while(N > 0) {
             if(N % 2 == 1) {
-                // Odd exponent: include one x in the answer
+
                 ans = ans * x;
                 N = N - 1;
             }
