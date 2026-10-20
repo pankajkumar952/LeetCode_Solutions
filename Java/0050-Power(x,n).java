@@ -1,14 +1,32 @@
 class Solution {
     public double myPow(double x, int n) {
+        double ans = 1.0;
 
-        long N = Math.abs((long) n);
+        // Use long to safely handle Integer.MIN_VALUE
+        long N = n;
+        boolean neg = N < 0;
 
-        double ans = 1;
+        // Convert negative exponent to positive
+        if(neg) N = -N;
 
-        for (long i = 0; i < N; i++) {
-            ans *= x;
+        while(N > 0) {
+            if(N % 2 == 1) {
+                // Odd exponent: include one x in the answer
+                ans = ans * x;
+                N = N - 1;
+            }
+            else {
+                // Even exponent: square x and halve the exponent
+                x = x * x;
+                N = N / 2;
+            }
         }
 
-        return n < 0 ? 1 / ans : ans;
+        // Negative exponent means taking the reciprocal
+        if(neg) {
+            return 1 / ans;
+        }
+
+        return ans;
     }
 }
