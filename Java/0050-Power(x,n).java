@@ -2,7 +2,6 @@ class Solution {
     public double myPow(double x, int n) {
         double ans = 1.0;
 
-        // Use long to safely handle Integer.MIN_VALUE
         long N = n;
         boolean neg = N < 0;
 
