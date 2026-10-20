@@ -4,6 +4,9 @@ class Solution {
         int n = nums.length;
         int ans = 0;
 
+        int[] sorted = nums.clone();
+        java.util.Arrays.sort(sorted);
+
         for (int k = 1; k <= n; k++) {
             if (n % k != 0) {
                 continue;
@@ -12,15 +15,25 @@ class Solution {
             boolean valid = true;
 
             for (int start = 0; start < n; start += k) {
-                int descents = 0;
+                int end = start + k;
+                int pivot = -1;
 
-                for (int i = start; i < start + k - 1; i++) {
-                    if (nums[i] > nums[i + 1]) {
-                        descents++;
+                for (int i = start + 1; i < end; i++) {
+                    if (nums[i] < nums[i - 1]) {
+                        if (pivot != -1) {
+                            valid = false;
+                            break;
+                        }
+                        pivot = i;
                     }
                 }
 
-                if (descents > 1) {
+                if (!valid) {
+                    break;
+                }
+
+                if (pivot != -1 &&
+                    nums[end - 1] > nums[start]) {
                     valid = false;
                     break;
                 }
@@ -30,23 +43,17 @@ class Solution {
                 continue;
             }
 
-            int prevMax = Integer.MIN_VALUE;
+            int[] result = nums.clone();
 
             for (int start = 0; start < n; start += k) {
-                int min = Integer.MAX_VALUE;
-                int max = Integer.MIN_VALUE;
+                java.util.Arrays.sort(result, start, start + k);
+            }
 
-                for (int i = start; i < start + k; i++) {
-                    min = Math.min(min, nums[i]);
-                    max = Math.max(max, nums[i]);
-                }
-
-                if (prevMax > min) {
+            for (int i = 1; i < n; i++) {
+                if (result[i] < result[i - 1]) {
                     valid = false;
                     break;
                 }
-
-                prevMax = max;
             }
 
             if (valid) {
@@ -57,4 +64,3 @@ class Solution {
         return ans;
     }
 }
-
