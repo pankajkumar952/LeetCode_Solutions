@@ -4,19 +4,19 @@ class Solution {
         long power = n;
 
         if (power < 0) {
-            x = 1 / x;
             power = -power;
+            x = 1.0 / x;
         }
 
         double result = 1.0;
 
         while (power > 0) {
-            if (power % 2 == 1) {
+            if ((power & 1) == 1) {
                 result *= x;
             }
 
             x *= x;
-            power /= 2;
+            power >>= 1;
         }
 
         return result;
