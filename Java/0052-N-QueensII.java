@@ -6,7 +6,6 @@ class Solution {
 
         return backtrack(0, n, cols, diagonal1, diagonal2);
     }
-
     private int backtrack(int row, int n,
                           boolean[] cols,
                           boolean[] diagonal1,
