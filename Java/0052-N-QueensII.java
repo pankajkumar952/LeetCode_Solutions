@@ -1,4 +1,3 @@
-
 class Solution {
     public int totalNQueens(int n) {
         boolean[] cols = new boolean[n];
