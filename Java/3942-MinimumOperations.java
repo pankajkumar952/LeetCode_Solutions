@@ -6,7 +6,7 @@ class Solution {
         boolean along = true, against = true;
         for (int k = 0; k < n && (along || against); k++) {
             int ring = nums[(shift + k) % n];  
-            along &= ring == k;  // counts up along the arrow
+            along &= ring == k;  
             against &= ring == (n - k) % n;  
         }
         if (along) return Math.min(shift, n - shift + 2);  // walk ahead, or turn, walk back, turn back
