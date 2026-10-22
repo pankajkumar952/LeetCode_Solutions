@@ -2,7 +2,6 @@ class Solution {
     public int minOperations(int[] nums) {
         int n = nums.length, shift = 0;
         while (nums[shift] != 0) shift++;
-
         boolean along = true, against = true;
         for (int k = 0; k < n && (along || against); k++) {
             int ring = nums[(shift + k) % n];  
