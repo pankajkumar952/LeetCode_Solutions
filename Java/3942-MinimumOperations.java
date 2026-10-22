@@ -1,43 +1,36 @@
+
 class Solution {
     public int minOperations(int[] nums) {
         int n = nums.length;
 
-        // Check every possible left rotation
-        for (int k = 0; k < n; k++) {
-            boolean sorted = true;
-
-            for (int i = 0; i < n; i++) {
-                if (nums[(i + k) % n] != i) {
-                    sorted = false;
-                    break;
-                }
-            }
-
-            if (sorted) {
-                return k;
-            }
-        }
-
-        // Check every possible rotation after reversal
-        int[] reversed = new int[n];
+        // Check rotations of the original array
+        int k = nums[0];
+        boolean valid = true;
 
         for (int i = 0; i < n; i++) {
-            reversed[i] = nums[n - 1 - i];
+            if (nums[i] != (i + k) % n) {
+                valid = false;
+                break;
+            }
         }
 
-        for (int k = 0; k < n; k++) {
-            boolean sorted = true;
+        if (valid) {
+            return (n - k) % n;
+        }
 
-            for (int i = 0; i < n; i++) {
-                if (reversed[(i + k) % n] != i) {
-                    sorted = false;
-                    break;
-                }
-            }
+        // Check rotations after reversing
+        k = nums[0];
+        valid = true;
 
-            if (sorted) {
-                return k + 1;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] != (k - i + n) % n) {
+                valid = false;
+                break;
             }
+        }
+
+        if (valid) {
+            return (n - k) % n + 1;
         }
 
         return -1;
