@@ -9,7 +9,7 @@ class Solution {
             along &= ring == k;  
             against &= ring == (n - k) % n;  
         }
-        if (along) return Math.min(shift, n - shift + 2);  // walk ahead, or turn, walk back, turn back
+        if (along) return Math.min(shift, n - shift + 2);  
         if (against) return Math.min(shift + 2, n - shift);  // walk ahead and turn, or turn and walk back
         return -1;
     }
