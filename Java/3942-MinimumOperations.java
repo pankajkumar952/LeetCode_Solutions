@@ -1,38 +1,16 @@
-
 class Solution {
     public int minOperations(int[] nums) {
-        int n = nums.length;
+        int n = nums.length, shift = 0;
+        while (nums[shift] != 0) shift++;
 
-        // Check rotations of the original array
-        int k = nums[0];
-        boolean valid = true;
-
-        for (int i = 0; i < n; i++) {
-            if (nums[i] != (i + k) % n) {
-                valid = false;
-                break;
-            }
+        boolean along = true, against = true;
+        for (int k = 0; k < n && (along || against); k++) {
+            int ring = nums[(shift + k) % n];  // the circle, read from 0
+            along &= ring == k;  // counts up along the arrow
+            against &= ring == (n - k) % n;  // counts up against the arrow
         }
-
-        if (valid) {
-            return (n - k) % n;
-        }
-
-        // Check rotations after reversing
-        k = nums[0];
-        valid = true;
-
-        for (int i = 0; i < n; i++) {
-            if (nums[i] != (k - i + n) % n) {
-                valid = false;
-                break;
-            }
-        }
-
-        if (valid) {
-            return (n - k) % n + 1;
-        }
-
+        if (along) return Math.min(shift, n - shift + 2);  // walk ahead, or turn, walk back, turn back
+        if (against) return Math.min(shift + 2, n - shift);  // walk ahead and turn, or turn and walk back
         return -1;
     }
 }
