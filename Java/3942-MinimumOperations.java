@@ -5,7 +5,7 @@ class Solution {
 
         boolean along = true, against = true;
         for (int k = 0; k < n && (along || against); k++) {
-            int ring = nums[(shift + k) % n];  // the circle, read from 0
+            int ring = nums[(shift + k) % n];  
             along &= ring == k;  // counts up along the arrow
             against &= ring == (n - k) % n;  // counts up against the arrow
         }
