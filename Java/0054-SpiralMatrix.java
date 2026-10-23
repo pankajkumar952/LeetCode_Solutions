@@ -8,7 +8,6 @@ class Solution {
         int right = matrix[0].length - 1;
         while (top <= bottom && left <= right) {
 
-            // 1. Traverse left to right
             for (int i = left; i <= right; i++) {
                 result.add(matrix[top][i]);
             }
