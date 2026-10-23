@@ -26,7 +26,6 @@ class Solution {
                 bottom--;
             }
 
-            // 4. Traverse bottom to top
             if (left <= right) {
                 for (int i = bottom; i >= top; i--) {
                     result.add(matrix[i][left]);
