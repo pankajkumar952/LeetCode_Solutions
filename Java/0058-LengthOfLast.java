@@ -1,5 +1,3 @@
-
-
 class Solution {
     public int lengthOfLastWord(String s) {
         int i = s.length() - 1;
