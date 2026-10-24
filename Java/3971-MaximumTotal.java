@@ -1,76 +1,85 @@
-
 class Solution {
-    private static final long MOD = 1_000_000_007L;
+
+    long mod = 1_000_000_007 ;
 
     public int maxTotalValue(int[] value, int[] decay, int m) {
-        long totalPositive = 0;
-        int maxValue = 0;
 
-        for (int v : value) {
-            totalPositive += v;
-            maxValue = Math.max(maxValue, v);
+        int n = value.length ;
+
+        long max = 0 ;
+        for(int val : value) max = Math.max(max, val) ;
+
+        if(findCount(value, decay, 1, n) < m) return (int)(findSum(value, decay, 1, n)) ;
+
+        long low = 1 ;
+        long high = max ;
+        long count = 0 ;
+        long G = 1 ;
+
+
+        while(low <= high)
+        {
+            long mid = (high + low) / 2 ;
+
+            long tempCount = findCount(value, decay, mid, n) ;
+
+            if( tempCount >= m)
+            {
+                low = mid + 1 ;
+                count = tempCount ;
+                G = mid ;
+            }
+            else
+            {
+                high = mid - 1 ;
+            } 
         }
 
-        long picks = Math.min((long) m, totalPositive);
+        long sum = findSum(value, decay, G, n) ;
 
-        // Binary search for the m-th largest positive gain.
-        long low = 1, high = maxValue;
-
-        while (low < high) {
-            long mid = low + (high - low + 1) / 2;
-            long count = 0;
-
-            for (int i = 0; i < value.length; i++) {
-                if (value[i] >= mid) {
-                    count += (value[i] - mid) / decay[i] + 1;
-                    if (count >= picks) {
-                        break;
-                    }
-                }
-            }
-
-            if (count >= picks) {
-                low = mid;
-            } else {
-                high = mid - 1;
-            }
-        }
-
-        long threshold = low;
-        long countGreater = 0;
-        long answer = 0;
-
-        // Sum all gains strictly greater than the threshold.
-        for (int i = 0; i < value.length; i++) {
-            long v = value[i];
-            long d = decay[i];
-
-            if (v > threshold) {
-                long k = (v - 1 - threshold) / d + 1;
-
-                countGreater += k;
-
-                long first = v;
-                long last = v - (k - 1) * d;
-
-                long a = k;
-                long b = first + last;
-
-                if (a % 2 == 0) {
-                    a /= 2;
-                } else {
-                    b /= 2;
-                }
-
-                answer = (answer + (a % MOD) * (b % MOD)) % MOD;
-            }
-        }
-
-        // Fill remaining selections with the threshold value.
-        long remaining = picks - countGreater;
-        answer = (answer + (remaining % MOD) * (threshold % MOD)) % MOD;
-
-        return (int) answer;
+        long extra = count - m ;
+        long res = (sum - (extra % mod) * (G % mod)) % mod ;
+        if(res < 0) res += mod ;
+        return (int) res ;
     }
-}
 
+    long findCount(int[] value, int[] decay, long G, int n)
+    {
+        long count = 0 ;
+
+        for(int i = 0 ; i < n ; i ++)
+        {
+            int a = value[i] ;
+            int d = decay[i] ;
+
+            if(a < G) continue ;
+
+            long k = (a - G) / d ;
+
+            count += k + 1 ;
+
+        }
+
+        return count ;
+    }
+
+    long findSum(int[] value, int[] decay, long G, int n)
+    {
+        long sum = 0 ;
+
+        for(int i = 0 ; i < n ; i ++)
+        {
+            int a = value[i] ;
+            int d = decay[i] ;
+
+            if(a < G) continue ;
+
+            long k = (a - G) / d ;
+
+            sum += (((k + 1) * (2 * a - d * k)) / 2) % mod ;
+        }
+
+        return sum % mod ;        
+    }
+
+}
