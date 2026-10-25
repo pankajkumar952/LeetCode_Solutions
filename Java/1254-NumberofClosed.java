@@ -8,7 +8,7 @@ class Solution {
 
         grid[r][c] = 1;
 
-        dfs(grid, r + 1, c); // Down
+        dfs(grid, r + 1, c); 
         dfs(grid, r - 1, c); // Up
         dfs(grid, r, c + 1); // Right
         dfs(grid, r, c - 1); // Left
