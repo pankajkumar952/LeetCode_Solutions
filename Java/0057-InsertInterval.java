@@ -17,12 +17,10 @@ class Solution {
         }
 
         result.add(newInterval);
-
         while (i < n) {
             result.add(intervals[i]);
             i++;
         }
-
         return result.toArray(new int[result.size()][]);
     }
 }
