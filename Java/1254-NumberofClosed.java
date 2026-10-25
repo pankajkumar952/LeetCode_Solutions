@@ -6,7 +6,6 @@ class Solution {
             return;
         }
 
-        // Mark land as visited
         grid[r][c] = 1;
 
         dfs(grid, r + 1, c); // Down
