@@ -9,27 +9,24 @@ class Solution {
         grid[r][c] = 1;
 
         dfs(grid, r + 1, c); 
-        dfs(grid, r - 1, c); // Up
-        dfs(grid, r, c + 1); // Right
-        dfs(grid, r, c - 1); // Left
+        dfs(grid, r - 1, c); 
+        dfs(grid, r, c + 1);
+        dfs(grid, r, c - 1); 
     }
 
     public int closedIsland(int[][] grid) {
         rows = grid.length;
         cols = grid[0].length;
 
-        // Step 1: Remove islands connected to boundaries
         for (int r = 0; r < rows; r++) {
             dfs(grid, r, 0);
             dfs(grid, r, cols - 1);
         }
-
         for (int c = 0; c < cols; c++) {
             dfs(grid, 0, c);
             dfs(grid, rows - 1, c);
         }
 
-        // Step 2: Count remaining islands
         int count = 0;
 
         for (int r = 0; r < rows; r++) {
