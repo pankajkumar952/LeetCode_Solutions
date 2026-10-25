@@ -1,6 +1,5 @@
 class Solution {
     private int rows, cols;
-
     private void dfs(int[][] grid, int r, int c) {
         if (r < 0 || c < 0 || r >= rows || c >= cols
                 || grid[r][c] == 1) {
