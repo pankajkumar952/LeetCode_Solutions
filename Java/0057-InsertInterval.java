@@ -18,7 +18,6 @@ class Solution {
 
         result.add(newInterval);
 
-        // Step 3: Add remaining intervals
         while (i < n) {
             result.add(intervals[i]);
             i++;
