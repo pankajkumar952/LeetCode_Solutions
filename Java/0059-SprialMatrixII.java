@@ -22,7 +22,6 @@ class Solution {
                 }
                 bottom--;
             }
-
             if (left <= right) {
                 for (int i = bottom; i >= top; i--) {
                     matrix[i][left] = num++;
