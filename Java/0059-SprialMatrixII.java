@@ -12,7 +12,6 @@ class Solution {
             }
             top++;
 
-            // 2. Top to Bottom
             for (int i = top; i <= bottom; i++) {
                 matrix[i][right] = num++;
             }
