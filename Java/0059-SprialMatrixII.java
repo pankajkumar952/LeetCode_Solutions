@@ -7,7 +7,6 @@ class Solution {
 
         while (top <= bottom && left <= right) {
 
-            // 1. Left to Right
             for (int j = left; j <= right; j++) {
                 matrix[top][j] = num++;
             }
