@@ -24,7 +24,6 @@ class Solution {
                 bottom--;
             }
 
-            // 4. Bottom to Top
             if (left <= right) {
                 for (int i = bottom; i >= top; i--) {
                     matrix[i][left] = num++;
