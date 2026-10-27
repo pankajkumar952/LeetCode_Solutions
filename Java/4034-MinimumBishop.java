@@ -8,13 +8,9 @@ class Solution {
         if ((sr + sc) % 2 != (tr + tc) % 2) {
             return -1;
         }
-
-        // Both positions lie on the same diagonal
         if (Math.abs(sr - tr) == Math.abs(sc - tc)) {
             return 1;
         }
-
-        // Same color, but different diagonals
         return 2;
     }
 }
