@@ -1,17 +1,12 @@
 
-
 class Solution {
-    public char[][] findSafeWalk(int m, int n) {
-        char[][] grid = new char[m][n];
+    public String[] createGrid(int m, int n) {
+        String[] grid = new String[m];
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (i == 0 || j == n - 1) {
-                    grid[i][j] = '.';
-                } else {
-                    grid[i][j] = '#';
-                }
-            }
+        grid[0] = ".".repeat(n);
+
+        for (int i = 1; i < m; i++) {
+            grid[i] = "#".repeat(n - 1) + ".";
         }
 
         return grid;
