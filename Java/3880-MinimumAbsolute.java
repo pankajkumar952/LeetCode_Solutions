@@ -1,5 +1,3 @@
-
-
 class Solution {
     public int minAbsoluteDifference(int[] nums) {
         int ans = Integer.MAX_VALUE;
