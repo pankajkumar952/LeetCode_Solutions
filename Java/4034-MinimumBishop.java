@@ -1,5 +1,3 @@
-
-
 class Solution {
     public int minBishopMoves(int[] source, int[] target) {
         int sr = source[0];
