@@ -1,4 +1,3 @@
-
 class Solution {
     public String[] createGrid(int m, int n) {
         String[] grid = new String[m];
