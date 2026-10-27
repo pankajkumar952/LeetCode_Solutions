@@ -5,7 +5,6 @@ class Solution {
         int tr = target[0];
         int tc = target[1];
 
-        // Different colored squares: impossible
         if ((sr + sc) % 2 != (tr + tc) % 2) {
             return -1;
         }
