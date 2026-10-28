@@ -17,7 +17,6 @@ class Solution {
             }
             top++;
 
-            // Top to bottom
             for (int i = top; i <= bottom && head != null; i++) {
                 matrix[i][right] = head.val;
                 head = head.next;
