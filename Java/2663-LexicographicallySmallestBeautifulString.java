@@ -2,7 +2,6 @@ class Solution {
     public String smallestBeautifulString(String s, int k) {
         char[] arr = s.toCharArray();
         int n = arr.length;
-
         for (int i = n - 1; i >= 0; i--) {
             for (char c = (char) (arr[i] + 1); c < 'a' + k; c++) {
 
