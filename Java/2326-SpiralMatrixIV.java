@@ -11,7 +11,6 @@ class Solution {
 
         while (head != null) {
 
-            // Left to right
             for (int j = left; j <= right && head != null; j++) {
                 matrix[top][j] = head.val;
                 head = head.next;
