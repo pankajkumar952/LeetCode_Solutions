@@ -2,7 +2,6 @@ class Solution {
     public int[][] spiralMatrix(int m, int n, ListNode head) {
         int[][] matrix = new int[m][n];
 
-        // Fill all cells with -1
         for (int i = 0; i < m; i++) {
             java.util.Arrays.fill(matrix[i], -1);
         }
