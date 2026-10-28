@@ -4,7 +4,6 @@ class Solution {
         int n = arr.length;
         for (int i = n - 1; i >= 0; i--) {
             for (char c = (char) (arr[i] + 1); c < 'a' + k; c++) {
-
                 if (i > 0 && arr[i - 1] == c) {
                     continue;
                 }
