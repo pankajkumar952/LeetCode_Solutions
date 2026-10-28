@@ -23,14 +23,13 @@ class Solution {
             }
             right--;
 
-            // Right to left
             for (int j = right; j >= left && head != null; j--) {
                 matrix[bottom][j] = head.val;
                 head = head.next;
             }
             bottom--;
 
-            // Bottom to top
+         
             for (int i = bottom; i >= top && head != null; i--) {
                 matrix[i][left] = head.val;
                 head = head.next;
