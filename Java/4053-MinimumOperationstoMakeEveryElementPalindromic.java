@@ -1,4 +1,3 @@
-
 class Solution {
     public long minOperations(int[] nums) {
         long total = 0;
@@ -12,7 +11,6 @@ class Solution {
             long scale = pow10(half - 1);
             long best = Long.MAX_VALUE;
 
-            // Nearby prefixes
             for (long p = prefix - 1; p <= prefix + 1; p++) {
                 if (p >= scale && p < scale * 10) {
                     best = Math.min(
@@ -21,7 +19,7 @@ class Solution {
                 }
             }
 
-            // Palindromes with matching parity and leading digits
+            
             for (int digit = 1; digit <= 9; digit++) {
                 if ((digit & 1) != (num & 1)) continue;
 
@@ -35,7 +33,7 @@ class Solution {
                     cost(num, makePalindrome(largestPrefix, len)));
             }
 
-            // Largest valid palindrome with one fewer digit
+          
             if (len > 1) {
                 int prevLen = len - 1;
                 int prevHalf = (prevLen + 1) / 2;
@@ -52,7 +50,7 @@ class Solution {
                 best = Math.min(best, cost(num, candidate));
             }
 
-            // Smallest valid palindrome with one extra digit
+          
             long nextPower = pow10(len);
             long digit = ((num & 1) == 1) ? 1 : 2;
             long nextCandidate = digit * nextPower + digit;
