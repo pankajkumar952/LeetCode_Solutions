@@ -9,7 +9,6 @@ class Solution {
             dp[0][j] = matrix[0][j];
         }
 
-        // Calculate minimum falling path sum for each cell.
         for (int i = 1; i < n; i++) {
             for (int j = 0; j < n; j++) {
 
