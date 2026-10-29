@@ -48,7 +48,6 @@ class Solution {
 
         buildTree();
 
-        // Initialize Fenwick Tree with root-to-node XOR masks.
         for (int u = 0; u < n; u++) {
             rangeXor(tin[u], tin[u], rootPrefix[u]);
         }
@@ -65,8 +64,7 @@ class Solution {
                 int delta = mask[u] ^ newMask;
 
                 if (delta != 0) {
-                    // Every node in u's subtree has an updated
-                    // root-to-node prefix XOR.
+               
                     rangeXor(tin[u], tout[u], delta);
                     mask[u] = newMask;
                 }
@@ -80,8 +78,6 @@ class Solution {
                 int pathMask =
                         prefix(u) ^ prefix(v) ^ mask[l];
 
-                // A palindrome permutation allows at most
-                // one character with an odd frequency.
                 answer.add(
                     (pathMask & (pathMask - 1)) == 0
                 );
@@ -101,7 +97,6 @@ class Solution {
         stack[top++] = 0;
         parent[0] = 0;
 
-        // Iterative DFS preorder traversal.
         while (top > 0) {
             int u = stack[--top];
 
@@ -126,7 +121,6 @@ class Solution {
             }
         }
 
-        // Compute subtree end positions in reverse preorder.
         for (int u = 0; u < n; u++) {
             tout[u] = tin[u];
         }
@@ -138,7 +132,6 @@ class Solution {
             tout[p] = Math.max(tout[p], tout[u]);
         }
 
-        // Binary lifting table for LCA.
         for (int k = 1; k < LOG; k++) {
             for (int u = 0; u < n; u++) {
                 up[k][u] = up[k - 1][up[k - 1][u]];
@@ -179,7 +172,6 @@ class Solution {
         return sum(tin[u]);
     }
 
-    // XOR-update every Euler position in [l, r].
     private void rangeXor(int l, int r, int value) {
         add(l, value);
         add(r + 1, value);
