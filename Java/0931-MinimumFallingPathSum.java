@@ -5,7 +5,6 @@ class Solution {
 
         int[][] dp = new int[n][n];
 
-        // First row: path can start at any cell.
         for (int j = 0; j < n; j++) {
             dp[0][j] = matrix[0][j];
         }
