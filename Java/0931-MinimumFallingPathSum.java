@@ -1,4 +1,3 @@
-
 class Solution {
     public int minFallingPathSum(int[][] matrix) {
         int n = matrix.length;
@@ -28,7 +27,6 @@ class Solution {
             }
         }
 
-        // Minimum sum among all cells in the last row.
         int answer = Integer.MAX_VALUE;
 
         for (int j = 0; j < n; j++) {
