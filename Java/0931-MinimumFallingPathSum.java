@@ -7,7 +7,6 @@ class Solution {
         for (int j = 0; j < n; j++) {
             dp[0][j] = matrix[0][j];
         }
-
         for (int i = 1; i < n; i++) {
             for (int j = 0; j < n; j++) {
 
