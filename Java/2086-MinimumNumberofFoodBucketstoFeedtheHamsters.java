@@ -14,7 +14,6 @@ class Solution {
                 continue;
             }
 
-            // Place bucket on right if possible
             if (i + 1 < n && arr[i + 1] == '.') {
                 arr[i + 1] = 'B';
                 buckets++;
