@@ -1,5 +1,4 @@
 import java.util.*;
-
 class Solution {
     public int[] arrayChange(int[] nums, int[][] operations) {
 
