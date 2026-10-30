@@ -7,12 +7,10 @@ class Solution {
         int prefixXor = 0;
         long count = 0;
 
-        // Empty prefix has XOR = 0
         map.put(0, 1L);
 
         for (int num : nums) {
 
-            // Calculate prefix XOR
             prefixXor ^= num;
 
             // Count previous occurrences
