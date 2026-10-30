@@ -19,7 +19,6 @@ class Solution {
                 buckets++;
             }
 
-            // Otherwise place bucket on left
             else if (i > 0 && arr[i - 1] == '.') {
                 arr[i - 1] = 'B';
                 buckets++;
