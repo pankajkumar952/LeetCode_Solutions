@@ -1,4 +1,3 @@
-
 class Solution {
     public int minLength(String s, int numOps) {
 
@@ -25,7 +24,6 @@ class Solution {
 
         int n = s.length();
 
-        // Special case: longest substring must be 1
         if (len == 1) {
 
             int count0 = 0;
@@ -48,7 +46,6 @@ class Solution {
             return Math.min(count0, count1) <= numOps;
         }
 
-        // For len >= 2, count required flips
         int operations = 0;
         int count = 1;
 
