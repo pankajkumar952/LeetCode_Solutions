@@ -10,8 +10,6 @@ class Solution {
             if (arr[i] != 'H') {
                 continue;
             }
-
-            // Already fed by left bucket
             if (i > 0 && arr[i - 1] == 'B') {
                 continue;
             }
