@@ -13,10 +13,7 @@ class Solution {
 
             prefixXor ^= num;
 
-            // Count previous occurrences
             count += map.getOrDefault(prefixXor, 0L);
-
-            // Store current prefix XOR
             map.put(prefixXor,
                     map.getOrDefault(prefixXor, 0L) + 1);
         }
