@@ -25,7 +25,6 @@ class Solution {
                 buckets++;
             }
 
-            // No available position
             else {
                 return -1;
             }
