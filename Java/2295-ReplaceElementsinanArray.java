@@ -4,7 +4,6 @@ class Solution {
 
         HashMap<Integer, Integer> map = new HashMap<>();
 
-        // Store number and its index
         for (int i = 0; i < nums.length; i++) {
             map.put(nums[i], i);
         }
