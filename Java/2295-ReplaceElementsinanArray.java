@@ -8,7 +8,6 @@ class Solution {
             map.put(nums[i], i);
         }
 
-        // Perform replacement operations
         for (int[] op : operations) {
 
             int oldValue = op[0];
@@ -16,10 +15,8 @@ class Solution {
 
             int index = map.get(oldValue);
 
-            // Update array
             nums[index] = newValue;
 
-            // Update HashMap
             map.remove(oldValue);
             map.put(newValue, index);
         }
