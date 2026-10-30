@@ -1,6 +1,4 @@
-
 import java.util.*;
-
 class Solution {
     public long beautifulSubarrays(int[] nums) {
 
