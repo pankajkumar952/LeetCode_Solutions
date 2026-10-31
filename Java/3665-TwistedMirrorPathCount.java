@@ -24,7 +24,7 @@ class Solution {
 
                 long ways = dp[i][j];
 
-                // Attempt to move right
+           
                 int next = resolve(grid, i, j + 1, 0);
 
                 if (next != -1) {
@@ -34,7 +34,6 @@ class Solution {
                     dp[r][c] = (dp[r][c] + ways) % MOD;
                 }
 
-                // Attempt to move down
                 next = resolve(grid, i + 1, j, 1);
 
                 if (next != -1) {
@@ -49,8 +48,6 @@ class Solution {
         return (int) dp[m - 1][n - 1];
     }
 
-    // dir = 0: entered while moving right
-    // dir = 1: entered while moving down
     private int resolve(int[][] grid, int r, int c, int dir) {
         int[] path = new int[m + n + 5];
         int len = 0;
@@ -72,11 +69,11 @@ class Solution {
             path[len++] = state;
 
             if (dir == 0) {
-                // Mirror entered from the left: move down
+            
                 r++;
                 dir = 1;
             } else {
-                // Mirror entered from above: move right
+             
                 c++;
                 dir = 0;
             }
