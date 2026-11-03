@@ -1,7 +1,6 @@
 import java.util.*;
 
 class Solution {
-
     TreeMap<Integer, Integer> low = new TreeMap<>();
     TreeMap<Integer, Integer> high = new TreeMap<>();
 
