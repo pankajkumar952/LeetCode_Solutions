@@ -4,7 +4,6 @@ class Solution {
     public int[] assignTasks(int[] servers, int[] tasks) {
         int n = servers.length, m = tasks.length;
 
-        // free servers: ordered by (weight, index)
         PriorityQueue<int[]> free = new PriorityQueue<>((a, b) ->
             a[0] != b[0] ? Integer.compare(a[0], b[0]) : Integer.compare(a[1], b[1]));
 
