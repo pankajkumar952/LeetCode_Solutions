@@ -10,7 +10,6 @@ class Solution {
             count += 1L << (h - 1);
         }
 
-        // palindromes with exactly len bits
         int h = (len + 1) / 2;
         long prefix = n >> (len - h);        // top half of n (includes middle bit if odd)
         count += prefix - (1L << (h - 1));   // palindromes whose prefix is smaller than n's prefix
