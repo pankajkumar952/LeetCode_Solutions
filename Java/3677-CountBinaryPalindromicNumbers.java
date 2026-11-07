@@ -14,7 +14,6 @@ class Solution {
         long prefix = n >> (len - h);        
         count += prefix - (1L << (h - 1));   
 
-        // palindrome built from n's own prefix: include it only if <= n
         if (build(prefix, len) <= n) count++;
 
         return (int) count;
