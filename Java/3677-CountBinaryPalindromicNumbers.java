@@ -19,7 +19,6 @@ class Solution {
         return (int) count;
     }
 
-    // build a palindrome of total length L from its first half (h bits)
     private long build(long prefix, int L) {
         long x = prefix;
         long t = (L % 2 == 1) ? prefix >> 1 : prefix;
