@@ -23,7 +23,6 @@ class Solution {
         for (int j = 0; j < m; j++) {
             t = Math.max(t, j);
 
-            // release servers that finished by time t
             while (!busy.isEmpty() && busy.peek()[0] <= t) {
                 long[] s = busy.poll();
                 free.offer(new int[]{(int) s[1], (int) s[2]});
