@@ -11,7 +11,7 @@ class Solution {
         }
 
         int h = (len + 1) / 2;
-        long prefix = n >> (len - h);        // top half of n (includes middle bit if odd)
+        long prefix = n >> (len - h);        
         count += prefix - (1L << (h - 1));   // palindromes whose prefix is smaller than n's prefix
 
         // palindrome built from n's own prefix: include it only if <= n
