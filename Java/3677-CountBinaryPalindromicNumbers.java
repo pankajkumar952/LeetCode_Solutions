@@ -5,7 +5,6 @@ class Solution {
         int len = 64 - Long.numberOfLeadingZeros(n);
         long count = 1; // counts k = 0
 
-        // all palindromes with fewer bits than n
         for (int L = 1; L < len; L++) {
             int h = (L + 1) / 2;
             count += 1L << (h - 1);
