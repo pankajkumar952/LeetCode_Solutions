@@ -12,7 +12,7 @@ class Solution {
 
         int h = (len + 1) / 2;
         long prefix = n >> (len - h);        
-        count += prefix - (1L << (h - 1));   // palindromes whose prefix is smaller than n's prefix
+        count += prefix - (1L << (h - 1));   
 
         // palindrome built from n's own prefix: include it only if <= n
         if (build(prefix, len) <= n) count++;
