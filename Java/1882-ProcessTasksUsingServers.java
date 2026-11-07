@@ -28,7 +28,6 @@ class Solution {
                 free.offer(new int[]{(int) s[1], (int) s[2]});
             }
 
-            // no free server: jump to the earliest completion time
             if (free.isEmpty()) {
                 t = busy.peek()[0];
                 while (!busy.isEmpty() && busy.peek()[0] <= t) {
