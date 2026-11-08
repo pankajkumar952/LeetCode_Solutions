@@ -27,7 +27,7 @@ class Solution {
         List<Integer> list = pos[v];
         int lo = 0, hi = list.size();
         int minI = j - maxLen;
-        while (lo < hi) {                      // first index >= minI
+        while (lo < hi) {              
             int mid = (lo + hi) >>> 1;
             if (list.get(mid) >= minI) hi = mid;
             else lo = mid + 1;
