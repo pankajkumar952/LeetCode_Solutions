@@ -22,7 +22,6 @@ class Solution {
         }
         return ans;
     }
-
     private int best(List<Integer>[] pos, int v, int j, int maxLen) {
         if (v < 0 || v >= pos.length || pos[v] == null) return 0;
         List<Integer> list = pos[v];
