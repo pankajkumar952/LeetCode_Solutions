@@ -8,7 +8,6 @@ class Solution {
             if (s.charAt(i) == '1') { P[i + 1] = P[i] + 1; t1++; }
             else { P[i + 1] = P[i] - 1; t0++; }
         }
-
         List<Integer>[] pos = new ArrayList[2 * n + 1];
         for (int i = 0; i <= n; i++) {
             int v = P[i] + n;
@@ -17,11 +16,7 @@ class Solution {
         }
         int ans = 0;
         for (int j = 0; j <= n; j++) {
-            // balance 0: no swap needed
-            ans = Math.max(ans, j - pos[P[j] + n].get(0));
-
-            // balance +2: swap an inside '1' with an outside '0'
-            // needs zeros_in <= t0 - 1, i.e. length <= 2*t0
+            ans = Math.max(ans, j - pos[P[j] + n].get(0));   
             ans = Math.max(ans, best(pos, P[j] - 2 + n, j, 2 * t0));
 
             // balance -2: swap an inside '0' with an outside '1'
