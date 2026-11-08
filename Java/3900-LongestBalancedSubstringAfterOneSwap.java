@@ -23,7 +23,6 @@ class Solution {
         return ans;
     }
 
-    // longest length j - i with i in pos[v], i < j, and j - i <= maxLen
     private int best(List<Integer>[] pos, int v, int j, int maxLen) {
         if (v < 0 || v >= pos.length || pos[v] == null) return 0;
         List<Integer> list = pos[v];
