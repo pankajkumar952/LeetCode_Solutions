@@ -15,7 +15,6 @@ class Solution {
             if (pos[v] == null) pos[v] = new ArrayList<>();
             pos[v].add(i);
         }
-
         int ans = 0;
         for (int j = 0; j <= n; j++) {
             // balance 0: no swap needed
