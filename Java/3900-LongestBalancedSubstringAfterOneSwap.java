@@ -18,9 +18,6 @@ class Solution {
         for (int j = 0; j <= n; j++) {
             ans = Math.max(ans, j - pos[P[j] + n].get(0));   
             ans = Math.max(ans, best(pos, P[j] - 2 + n, j, 2 * t0));
-
-            // balance -2: swap an inside '0' with an outside '1'
-            // needs ones_in <= t1 - 1, i.e. length <= 2*t1
             ans = Math.max(ans, best(pos, P[j] + 2 + n, j, 2 * t1));
         }
         return ans;
