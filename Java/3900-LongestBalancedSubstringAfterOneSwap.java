@@ -10,7 +10,6 @@ class Solution {
             else { P[i + 1] = P[i] - 1; t0++; }
         }
 
-        // positions of each prefix value (indices ascending)
         List<Integer>[] pos = new ArrayList[2 * n + 1];
         for (int i = 0; i <= n; i++) {
             int v = P[i] + n;
