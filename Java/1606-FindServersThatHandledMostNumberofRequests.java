@@ -21,7 +21,7 @@ class Solution {
 
         for (int i = 0; i < arrival.length; i++) {
 
-            // Release servers whose requests are completed
+          
             while (!busy.isEmpty() &&
                    busy.peek()[0] <= arrival[i]) {
 
