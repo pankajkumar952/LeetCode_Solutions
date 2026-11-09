@@ -34,7 +34,6 @@ class Solution {
                 continue;
             }
 
-            // Preferred server
             int server = i % k;
 
             // Find next available server
