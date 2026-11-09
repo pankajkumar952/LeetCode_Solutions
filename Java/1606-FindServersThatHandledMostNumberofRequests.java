@@ -4,7 +4,7 @@ import java.util.*;
 class Solution {
     public List<Integer> busiestServers(int k, int[] arrival, int[] load) {
 
-        // Available servers
+       
         TreeSet<Integer> available = new TreeSet<>();
 
         for (int i = 0; i < k; i++) {
