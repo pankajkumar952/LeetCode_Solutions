@@ -11,7 +11,7 @@ class Solution {
             available.add(i);
         }
 
-        // {finishTime, serverId}
+       
         PriorityQueue<int[]> busy = new PriorityQueue<>(
             (a, b) -> Integer.compare(a[0], b[0])
         );
