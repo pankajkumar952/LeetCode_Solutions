@@ -36,7 +36,7 @@ class Solution {
 
             int server = i % k;
 
-            // Find next available server
+           
             Integer assigned = available.ceiling(server);
 
             // Wrap around if necessary
