@@ -29,7 +29,7 @@ class Solution {
                 available.add(completed[1]);
             }
 
-            // All servers are busy
+          
             if (available.isEmpty()) {
                 continue;
             }
