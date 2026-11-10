@@ -9,7 +9,6 @@ class Solution {
                     int currCost = dp[i - jump]
                             + costs[i - 1]
                             + jump * jump;
-
                     dp[i] = Math.min(dp[i], currCost);
                 }
             }
