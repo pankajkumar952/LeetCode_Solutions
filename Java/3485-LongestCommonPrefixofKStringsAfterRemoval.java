@@ -1,4 +1,3 @@
-
 class Solution {
 
     static class TrieNode {
