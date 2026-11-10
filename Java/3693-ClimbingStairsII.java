@@ -1,4 +1,3 @@
-
 class Solution {
     public int climbStairs(int n, int[] costs) {
         int[] dp = new int[n + 1];
