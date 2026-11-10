@@ -55,10 +55,8 @@ class Solution {
 
         int maxLen = 0;
 
-        // Build Trie
         TrieNode root = new TrieNode();
 
-        // Store the Trie path for every word.
         TrieNode[][] paths = new TrieNode[n][];
 
         for (int i = 0; i < n; i++) {
@@ -86,10 +84,8 @@ class Solution {
             }
         }
 
-        // Count valid Trie nodes at each depth.
         int[] depthCount = new int[maxLen + 1];
 
-        // Traverse Trie.
         java.util.ArrayDeque<TrieNode> queue =
             new java.util.ArrayDeque<>();
 
@@ -110,7 +106,6 @@ class Solution {
             }
         }
 
-        // Initialize Segment Tree.
         SegmentTree seg = new SegmentTree(maxLen);
 
         for (int d = 1; d <= maxLen; d++) {
@@ -119,10 +114,8 @@ class Solution {
             }
         }
 
-        // Process removal of each word.
         for (int i = 0; i < n; i++) {
 
-            // Temporarily remove affected Trie nodes.
             for (TrieNode node : paths[i]) {
 
                 if (node.count == k) {
@@ -137,10 +130,8 @@ class Solution {
                 }
             }
 
-            // Maximum valid prefix length.
             ans[i] = seg.query();
 
-            // Restore Trie nodes.
             for (TrieNode node : paths[i]) {
 
                 if (node.count == k) {
