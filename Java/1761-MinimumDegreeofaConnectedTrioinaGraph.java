@@ -1,4 +1,3 @@
-
 class Solution {
     public int minTrioDegree(int n, int[][] edges) {
         boolean[][] graph = new boolean[n + 1][n + 1];
