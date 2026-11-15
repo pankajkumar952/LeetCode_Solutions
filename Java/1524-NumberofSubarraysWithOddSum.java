@@ -1,4 +1,3 @@
-
 class Solution {
     public int numOfSubarrays(int[] arr) {
         long mod = 1000000007;
