@@ -1,4 +1,3 @@
-
 class Solution {
     public int shortestPath(int[][] grid, int k) {
         int m = grid.length;
