@@ -7,7 +7,7 @@ class Solution {
         for (int len = 2; len <= n; len++) {
             for (int i = 0; i + len <= n; i++) {
                 int j = i + len - 1;
-                cost[i][j] = Integer.MAX_VALUE;
+                int best = Integer.MAX_VALUE;
 
                 for (int d = 1; d < len; d++) {
                     if (len % d != 0) continue;
@@ -15,20 +15,22 @@ class Solution {
                     int changes = 0;
 
                     for (int r = 0; r < d; r++) {
-                        int l = i + r;
+                        int left = i + r;
                         int right = j - ((len - 1 - r) / d) * d;
 
-                        while (l < right) {
-                            if (s.charAt(l) != s.charAt(right)) {
+                        while (left < right) {
+                            if (s.charAt(left) != s.charAt(right)) {
                                 changes++;
                             }
-                            l += d;
+                            left += d;
                             right -= d;
                         }
                     }
 
-                    cost[i][j] = Math.min(cost[i][j], changes);
+                    best = Math.min(best, changes);
                 }
+
+                cost[i][j] = best;
             }
         }
 
@@ -41,12 +43,12 @@ class Solution {
 
         dp[0][0] = 0;
 
-        for (int parts = 1; parts <= k; parts++) {
-            for (int i = parts * 2; i <= n; i++) {
-                for (int j = (parts - 1) * 2; j <= i - 2; j++) {
-                    dp[parts][i] = Math.min(
-                        dp[parts][i],
-                        dp[parts - 1][j] + cost[j][i - 1]
+        for (int p = 1; p <= k; p++) {
+            for (int i = 2 * p; i <= n; i++) {
+                for (int j = 2 * (p - 1); j <= i - 2; j++) {
+                    dp[p][i] = Math.min(
+                        dp[p][i],
+                        dp[p - 1][j] + cost[j][i - 1]
                     );
                 }
             }
@@ -55,4 +57,3 @@ class Solution {
         return dp[k][n];
     }
 }
-
