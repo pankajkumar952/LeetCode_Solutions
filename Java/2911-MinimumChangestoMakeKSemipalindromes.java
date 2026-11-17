@@ -6,31 +6,29 @@ class Solution {
 
         for (int len = 2; len <= n; len++) {
             for (int i = 0; i + len <= n; i++) {
-                int j = i + len - 1;
                 int best = Integer.MAX_VALUE;
 
                 for (int d = 1; d < len; d++) {
                     if (len % d != 0) continue;
 
                     int changes = 0;
+                    int groupLen = len / d;
 
                     for (int r = 0; r < d; r++) {
-                        int left = i + r;
-                        int right = j - ((len - 1 - r) / d) * d;
+                        for (int t = 0; t < groupLen / 2; t++) {
+                            int left = i + r + t * d;
+                            int right = i + r + (groupLen - 1 - t) * d;
 
-                        while (left < right) {
                             if (s.charAt(left) != s.charAt(right)) {
                                 changes++;
                             }
-                            left += d;
-                            right -= d;
                         }
                     }
 
                     best = Math.min(best, changes);
                 }
 
-                cost[i][j] = best;
+                cost[i][i + len - 1] = best;
             }
         }
 
