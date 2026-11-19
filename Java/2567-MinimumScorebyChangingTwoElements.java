@@ -1,8 +1,7 @@
-
 import java.util.Arrays;
 
 class Solution {
-    public int minScore(int[] nums) {
+    public int minimizeSum(int[] nums) {
         Arrays.sort(nums);
 
         int n = nums.length;
