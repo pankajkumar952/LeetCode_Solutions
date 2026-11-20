@@ -1,6 +1,4 @@
-
 import java.util.*;
-
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
