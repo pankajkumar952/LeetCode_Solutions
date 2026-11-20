@@ -1,4 +1,3 @@
-
 class Solution {
     public int numEnclaves(int[][] grid) {
         int m = grid.length;
