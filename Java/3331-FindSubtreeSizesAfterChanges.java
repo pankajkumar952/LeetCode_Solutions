@@ -1,5 +1,4 @@
 import java.util.*;
-
 class Solution {
     public int[] findSubtreeSizes(int[] parent, String s) {
         int n = parent.length;
