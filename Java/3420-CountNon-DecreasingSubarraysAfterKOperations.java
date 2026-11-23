@@ -1,6 +1,4 @@
-
 import java.util.*;
-
 class Solution {
     public long countNonDecreasingSubarrays(int[] nums, int k) {
         int n = nums.length;
