@@ -1,4 +1,3 @@
-
 class Solution {
     public TreeNode sortedArrayToBST(int[] nums) {
         return buildTree(nums, 0, nums.length - 1);
