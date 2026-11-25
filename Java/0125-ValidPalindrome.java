@@ -1,4 +1,3 @@
-
 class Solution {
     public boolean isPalindrome(String s) {
         int left = 0;
