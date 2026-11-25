@@ -1,115 +1,54 @@
 
-import java.util.*;
-
 class Solution {
     public int smallestUniqueSubarray(int[] nums) {
         int n = nums.length;
 
-        int[] sa = buildSuffixArray(nums);
-        int[] rank = new int[n];
+        int left = 1;
+        int right = n;
+        int answer = n;
 
-        for (int i = 0; i < n; i++) {
-            rank[sa[i]] = i;
-        }
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
 
-        int[] lcp = new int[n];
-        int h = 0;
-
-        for (int i = 0; i < n; i++) {
-            int r = rank[i];
-
-            if (r == 0) {
-                h = 0;
-                continue;
-            }
-
-            int j = sa[r - 1];
-
-            while (i + h < n && j + h < n &&
-                   nums[i + h] == nums[j + h]) {
-                h++;
-            }
-
-            lcp[r] = h;
-
-            if (h > 0) {
-                h--;
+            if (hasUnique(nums, mid)) {
+                answer = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
             }
         }
 
-        int ans = n;
-
-        for (int i = 0; i < n; i++) {
-            int maxLcp = lcp[i];
-
-            if (i + 1 < n) {
-                maxLcp = Math.max(maxLcp, lcp[i + 1]);
-            }
-
-            ans = Math.min(ans, maxLcp + 1);
-        }
-
-        return ans;
+        return answer;
     }
 
-    private int[] buildSuffixArray(int[] nums) {
+    private boolean hasUnique(int[] nums, int len) {
         int n = nums.length;
+        long base = 100003;
+        long mod = 1000000007L;
 
-        Integer[] order = new Integer[n];
-
-        for (int i = 0; i < n; i++) {
-            order[i] = i;
+        long power = 1;
+        for (int i = 0; i < len; i++) {
+            power = (power * base) % mod;
         }
 
-        int[] rank = nums.clone();
-        int[] newRank = new int[n];
+        long hash = 0;
 
-        for (int len = 1; len < n; len *= 2) {
-            final int k = len;
-            final int[] currentRank = rank;
+        for (int i = 0; i < len; i++) {
+            hash = (hash * base + nums[i]) % mod;
+        }
 
-            Arrays.sort(order, (a, b) -> {
-                if (currentRank[a] != currentRank[b]) {
-                    return Integer.compare(
-                        currentRank[a], currentRank[b]
-                    );
-                }
+        java.util.HashSet<Long> seen = new java.util.HashSet<>();
+        seen.add(hash);
 
-                int ra = a + k < n ? currentRank[a + k] : -1;
-                int rb = b + k < n ? currentRank[b + k] : -1;
+        for (int i = len; i < n; i++) {
+            hash = (hash * base + nums[i]) % mod;
+            hash = (hash - (nums[i - len] * power) % mod + mod) % mod;
 
-                return Integer.compare(ra, rb);
-            });
-
-            newRank[order[0]] = 0;
-
-            for (int i = 1; i < n; i++) {
-                int a = order[i - 1];
-                int b = order[i];
-
-                boolean different =
-                    rank[a] != rank[b] ||
-                    (a + k < n ? rank[a + k] : -1) !=
-                    (b + k < n ? rank[b + k] : -1);
-
-                newRank[b] = newRank[a] + (different ? 1 : 0);
-            }
-
-            int[] temp = rank;
-            rank = newRank;
-            newRank = temp;
-
-            if (rank[order[n - 1]] == n - 1) {
-                break;
+            if (!seen.add(hash)) {
+                return false;
             }
         }
 
-        int[] sa = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            sa[i] = order[i];
-        }
-
-        return sa;
+        return true;
     }
 }
