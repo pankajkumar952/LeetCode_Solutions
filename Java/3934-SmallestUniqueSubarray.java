@@ -1,54 +1,32 @@
 
+import java.util.*;
+
 class Solution {
     public int smallestUniqueSubarray(int[] nums) {
         int n = nums.length;
 
-        int left = 1;
-        int right = n;
-        int answer = n;
+        for (int len = 1; len <= n; len++) {
+            HashMap<String, Integer> map = new HashMap<>();
 
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
+            for (int i = 0; i + len <= n; i++) {
+                StringBuilder sb = new StringBuilder();
 
-            if (hasUnique(nums, mid)) {
-                answer = mid;
-                right = mid - 1;
-            } else {
-                left = mid + 1;
+                for (int j = i; j < i + len; j++) {
+                    sb.append(nums[j]).append(',');
+                }
+
+                String key = sb.toString();
+
+                map.put(key, map.getOrDefault(key, 0) + 1);
+            }
+
+            for (int count : map.values()) {
+                if (count == 1) {
+                    return len;
+                }
             }
         }
 
-        return answer;
-    }
-
-    private boolean hasUnique(int[] nums, int len) {
-        int n = nums.length;
-        long base = 100003;
-        long mod = 1000000007L;
-
-        long power = 1;
-        for (int i = 0; i < len; i++) {
-            power = (power * base) % mod;
-        }
-
-        long hash = 0;
-
-        for (int i = 0; i < len; i++) {
-            hash = (hash * base + nums[i]) % mod;
-        }
-
-        java.util.HashSet<Long> seen = new java.util.HashSet<>();
-        seen.add(hash);
-
-        for (int i = len; i < n; i++) {
-            hash = (hash * base + nums[i]) % mod;
-            hash = (hash - (nums[i - len] * power) % mod + mod) % mod;
-
-            if (!seen.add(hash)) {
-                return false;
-            }
-        }
-
-        return true;
+        return n;
     }
 }
