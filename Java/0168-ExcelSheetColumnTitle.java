@@ -1,4 +1,3 @@
-
 class Solution {
     public String convertToTitle(int columnNumber) {
         StringBuilder sb = new StringBuilder();
