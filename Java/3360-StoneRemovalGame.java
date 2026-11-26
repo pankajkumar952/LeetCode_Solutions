@@ -1,4 +1,3 @@
-
 class Solution {
     public boolean canAliceWin(int n) {
         int stones = 10;
