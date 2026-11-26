@@ -1,4 +1,3 @@
-
 class Solution {
     public long countAlternatingSubarrays(int[] nums) {
         long ans = 0;
