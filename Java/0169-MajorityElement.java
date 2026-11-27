@@ -1,4 +1,3 @@
-
 class Solution {
     public int majorityElement(int[] nums) {
         int candidate = 0;
