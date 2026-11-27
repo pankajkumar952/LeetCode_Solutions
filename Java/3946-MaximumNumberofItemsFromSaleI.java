@@ -1,40 +1,26 @@
 class Solution {
-    public int maxNumberOfItems(int[][] items, int budget) {
-        int n = items.length;
-        int[] bonus = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            int factor = items[i][0];
-
-            for (int j = 0; j < n; j++) {
-                if (i != j && items[j][0] % factor == 0) {
-                    bonus[i]++;
-                }
+    public int maximumSaleItems(int[][] items, int budget) {
+        int[] mult = new int[1501];
+        for (int[] it : items) {
+            int fac = it[0];
+            for (int f = 1; f <= 1500; ++f) {
+                if (fac % f == 0) ++mult[f];
             }
         }
-
         int[] dp = new int[budget + 1];
-
-        for (int i = 0; i < n; i++) {
-            int price = items[i][1];
-            int free = bonus[i];
-
-            int[] activated = new int[budget + 1];
-            java.util.Arrays.fill(activated, -1000000);
-
-            for (int b = 0; b <= budget; b++) {
-
-                if (b >= price) {
-                    activated[b] = Math.max(
-                        dp[b - price] + 1 + free,
-                        activated[b - price] + 1
-                    );
-                }
-
-                dp[b] = Math.max(dp[b], activated[b]);
+        for (int[] it : items) {
+            int f = it[0], p = it[1];
+            int[] ndp = dp.clone();
+            for (int b = budget; b >= p; --b) {
+                ndp[b] = Math.max(ndp[b], dp[b - p] + mult[f]);
             }
+            for (int b = p; b <= budget; ++b) {
+                ndp[b] = Math.max(ndp[b], ndp[b - p] + 1);
+            }
+            dp = ndp;
         }
-
-        return dp[budget];
+        int ans = 0;
+        for (int v : dp) ans = Math.max(ans, v);
+        return ans;
     }
 }
