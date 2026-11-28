@@ -1,7 +1,4 @@
-
-
 import java.util.*;
-
 class Solution {
     public int maximumSaleItems(int[][] items, int budget) {
         int n = items.length;
